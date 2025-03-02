@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&family=Source+Sans+3&display=swap");
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+/* Main container for the tree and navigation */
+.hotspots {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.hotspots img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Navigation buttons */
+.navigation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.hotspot {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  padding-top: 6px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "Oxygen", sans-serif;
+  color: #333;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.hotspot:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Positioned hotspots */
+#hs-a {
+  top: 40%;
+  left: 27%;
+}
+
+#hs-b {
+  top: 7%;
+  left: 32%;
+}
+
+#hs-c {
+  top: 7%;
+  left: 51%;
+}
+
+#hs-d {
+  top: 22%;
+  left: 61%;
+}
+
+#hs-e {
+  top: 44%;
+  left: 58%;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 900px) {
+  .hotspots {
+    padding: 10px;
+  }
+
+  .hotspot {
+    width: 120px;
+    height: 120px;
+    font-size: 16px;
+  }
+
+  #hs-a {
+    top: 40%;
+    left: 32%;
+  }
+
+  #hs-b {
+    top: 14%;
+    left: 34%;
+  }
+
+  #hs-c {
+    top: 12%;
+    left: 50%;
+  }
+
+  #hs-d {
+    top: 23%;
+    left: 65%;
+  }
+
+  #hs-e {
+    top: 40%;
+    left: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hotspots {
+    padding: 10px;
+  }
+
+  .hotspot {
+    width: 80px;
+    height: 80px;
+    font-size: 16px;
+  }
+
+  #hs-a {
+    top: 42%;
+    left: 27%;
+  }
+
+  #hs-b {
+    top: 14%;
+    left: 34%;
+  }
+
+  #hs-c {
+    top: 12%;
+    left: 57%;
+  }
+
+  #hs-d {
+    top: 25%;
+    left: 78%;
+  }
+
+  #hs-e {
+    top: 43%;
+    left: 54%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hotspots {
+    position: relative;
+  }
+
+  .hotspots img {
+    max-width: 90%;
+  }
+
+  .navigation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .hotspot {
+    width: 60px;
+    height: 60px;
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Adjust positions for mobile */
+  #hs-a {
+    top: 40%;
+    left: 23%;
+  }
+
+  #hs-b {
+    top: 7%;
+    left: 29%;
+  }
+
+  #hs-c {
+    top: 7%;
+    left: 54%;
+  }
+
+  #hs-d {
+    top: 22%;
+    left: 64%;
+  }
+
+  #hs-e {
+    top: 44%;
+    left: 62%;
+  }
+}
+
+/* For very small screens, create a fallback navigation */
+@media screen and (max-width: 480px) {
+  .hotspots img {
+    margin-bottom: 20px;
+  }
+
+  .navigation {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  .hotspot {
+    position: static;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin: 5px;
+  }
+}
