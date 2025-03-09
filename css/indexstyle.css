@@ -244,3 +244,36 @@ html {
     color: #333; /* Keep text visible on small screens for usability */
   }
 }
+
+/* For mobile screens */
+@media screen and (max-width: 480px) {
+  .hotspots img {
+    margin-bottom: 20px;
+  }
+
+  .navigation {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  .hotspot {
+    position: static;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    transform: none !important;
+  }
+
+  .hotspot:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: none !important;
+  }
+}
