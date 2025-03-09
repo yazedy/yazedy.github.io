@@ -48,17 +48,23 @@ html {
   text-decoration: none;
   font-weight: bold;
   font-family: "Oxygen", sans-serif;
-  color: #333;
+  color: transparent; /* Make text initially invisible */
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Reduce initial background opacity */
 }
 
 .hotspot:hover {
   transform: scale(1.1);
   background-color: rgba(255, 255, 255, 0.8);
+  color: #333; /* Show text color on hover for fallback */
 }
 
 /* Positioned hotspots */
@@ -235,5 +241,6 @@ html {
     border-radius: 5px;
     padding: 8px 15px;
     margin: 5px;
+    color: #333; /* Keep text visible on small screens for usability */
   }
 }

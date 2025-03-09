@@ -19,5 +19,77 @@
         <a href="blog.html" class="hotspot" id="hs-e">Blog</a>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hotspots = document.querySelectorAll(".hotspot");
+        const maxDistance = 300; // Maximum distance in pixels to detect proximity
+        const minOpacity = 0; // Minimum opacity when far away
+        const maxOpacity = 1; // Maximum opacity when cursor is over the hotspot
+        const minScale = 1; // Default scale
+        const maxScale = 1.5; // Maximum scale when cursor is over the hotspot
+
+        document.addEventListener("mousemove", function (e) {
+          // Get mouse position
+          const mouseX = e.clientX;
+          const mouseY = e.clientY;
+
+          // Check distance to each hotspot
+          hotspots.forEach((hotspot) => {
+            const rect = hotspot.getBoundingClientRect();
+            const hotspotX = rect.left + rect.width / 2;
+            const hotspotY = rect.top + rect.height / 2;
+
+            // Calculate distance between mouse and hotspot center
+            const distance = Math.sqrt(
+              Math.pow(mouseX - hotspotX, 2) + Math.pow(mouseY - hotspotY, 2)
+            );
+
+            // Calculate opacity based on distance
+            let opacity = 1 - distance / maxDistance;
+            opacity = Math.max(minOpacity, Math.min(maxOpacity, opacity));
+
+            // Calculate scale based on distance
+            let scale =
+              minScale + (maxScale - minScale) * (1 - distance / maxDistance);
+            scale = Math.max(minScale, Math.min(maxScale, scale));
+
+            // Apply styles only if within range
+            if (distance < maxDistance) {
+              hotspot.style.color = `rgba(51, 51, 51, ${opacity})`;
+              hotspot.style.transform = `scale(${scale})`;
+              hotspot.style.backgroundColor = `rgba(255, 255, 255, ${
+                0.3 + opacity * 0.5
+              })`;
+            } else {
+              hotspot.style.color = "transparent";
+              hotspot.style.transform = "scale(1)";
+              hotspot.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+            }
+          });
+        });
+
+        // Reset styles when mouse leaves the window
+        document.addEventListener("mouseleave", function () {
+          hotspots.forEach((hotspot) => {
+            hotspot.style.color = "transparent";
+            hotspot.style.transform = "scale(1)";
+            hotspot.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+          });
+        });
+
+        // Add touch support for mobile devices
+        document.addEventListener("touchmove", function (e) {
+          if (e.touches.length > 0) {
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent("mousemove", {
+              clientX: touch.clientX,
+              clientY: touch.clientY,
+            });
+            document.dispatchEvent(mouseEvent);
+          }
+        });
+      });
+    </script>
   </body>
 </html>
